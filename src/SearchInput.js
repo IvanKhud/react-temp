@@ -14,7 +14,6 @@ export default class Search extends React.Component {
         <form>
           <input
             placeholder="Type the name here"
-            ref={input => this.search = input}
             onChange={this.handleInputChange}
           />
         </form>

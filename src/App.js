@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import logo from './logo.svg';
 import './App.css';
 import LeftSidebar from './LeftSidebar';
-import RightSidebar from './LeftSidebar';
+import RightSidebar from './RightSidebar';
 
 class App extends Component {
   render() {

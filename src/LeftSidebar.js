@@ -5,21 +5,20 @@ import SearchInput from './SearchInput'
 export default class LeftSidebar extends React.Component {
   render () {
     const array = [
-      {def: 'item1', term: 'term1', obj1: 'rand'}, 
-      {def: 'item2', term: 'term2'}
+      {name: 'Burgers'},
+      {name: 'Steak'}
     ];
+
+    const listItems = array.map((item) =>
+      <li>{item.name}</li>
+    );
 
     return (
       <div className="left-sidebar">
       <SearchInput />
-      <dl>
-        {array.reduce((acc, item, idx) => {
-        	return acc.concat([
-          	<dt key={`def-${idx}`}>{item.def}</dt>,
-            <dd key={`term-${idx}`}>{item.term}</dd>
-          ]);
-        }, [])}
-      </dl>
+      <ul>
+        {listItems}
+      </ul>
       </div>
     );
   }
