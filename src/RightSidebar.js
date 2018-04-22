@@ -1,26 +1,25 @@
 import React from 'react';
-
-import SearchInput from './SearchInput'
+import PlaceItem from './PlaceItem'
 
 export default class RightSidebar extends React.Component {
   render () {
-    const array = [
-      {name: 'Honest meat', address: 'Rynok sq., 28'},
-      {name: 'Honest meat', address: 'Rynok sq., 28'},
-      {name: 'Honest meat', address: 'Rynok sq., 28'}
-    ];
-
-    const listItems = array.map((item) =>
-      <li>{item.name}</li>
-    );
-
     return (
-      <div className="right-sidebar">
-      <SearchInput />
-      <ul>
-        {listItems}
-      </ul>
-      </div>
+        <div class="sidebar sidebar-right">
+            <div className="search-container">
+                <input type="text" className="searchInput" placeholder="Type the name here" />
+                <i className="fa fa-search"></i>
+            </div>
+            <div className="search-result-container">
+                <div className="search-response">
+                    <PlaceItem />
+                    <hr />
+                    <PlaceItem />   
+                    <hr />
+                    <PlaceItem />
+                    <hr />
+                </div>
+            </div>
+        </div>
     );
   }
 }
