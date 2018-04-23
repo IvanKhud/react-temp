@@ -1,6 +1,6 @@
 import React from 'react';
 import PlaceItem from './PlaceItem';
-import Meals from './Meals'
+import Meals from './Meals';
 
 export default class FindYourMeal extends React.Component {
   
@@ -44,13 +44,13 @@ export default class FindYourMeal extends React.Component {
             <div className="find-tab-body">
                 {/* Left sidebar start */} 
                 <div className="sidebar sidebar-left">
-                    <div class="search-container">
+                    <div className="search-container">
                         <input type="text" className="searchInput" placeholder="Type the name here" ref={input => this.search = input} onChange={this.handleInputChange} />
-                        <i class="fa fa-search"></i>
-                        <div class="search-result-container">
-                            <div class="search-response">
-                                {this.renderMealsList()}
-                            </div>
+                        <i className="fa fa-search"></i>
+                    </div>
+                    <div class="search-result-container">
+                        <div class="search-response">
+                            {this.renderMealsList()}
                         </div>
                     </div>
                 </div>   

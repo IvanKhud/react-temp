@@ -1,5 +1,4 @@
 import React from 'react';
-import FindTabs from './FindTabs';
 import FindYourPlace from './FindYourPlace';
 import FindYourMeal from './FindYourMeal';
 

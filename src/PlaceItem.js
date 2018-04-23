@@ -16,6 +16,8 @@ export default class PlaceItem extends React.Component {
                 </div>
             </div>
             <div className="place-description">{this.props.placeDescription}</div>
+            <button class="place-button">ADD TO CARD</button>
+            <button class="place-button">PHONE</button>
         </div>
     );
   }
