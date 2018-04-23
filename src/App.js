@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import './App.css';
 import Menu from './Menu';
 import MainSection from './MainSection';
 import 'font-awesome/css/font-awesome.min.css';

@@ -1,6 +1,6 @@
 import React from 'react';
-import PlaceItem from './PlaceItem';
 import Meals from './Meals';
+import Places from './Places';
 
 export default class FindYourMeal extends React.Component {
   
@@ -9,8 +9,10 @@ export default class FindYourMeal extends React.Component {
 
       this.state = {
           currentMealsList: Meals.MealsList,
+          currentPlacesList: Places.PlacesList,
           currentMeal: Meals.MealsList[0],
-          searchMealQuery: ""
+          searchMealQuery: "",
+          searchPlaceQuery: ""
       }
   }
 
@@ -20,21 +22,52 @@ export default class FindYourMeal extends React.Component {
       });
   }
 
-  handleInputChange = () => {
-    let pattern = new RegExp(this.search.value, 'i');
+  handleMealInputChange = () => {
+    let pattern = new RegExp(this.searchMealInput.value, 'i');
     let filtered = Meals.MealsList.filter((meal) => {
         return pattern.test(meal.name)
     });
     this.setState({
-        searchMealQuery: this.search.value,
+        searchMealQuery: this.searchMealInput.value,
         currentMealsList: filtered,
         currentMeal: filtered[0] || {}
     });
   }
 
+  handlePlaceInputChange = () => {
+    let pattern = new RegExp(this.searchPlaceInput.value, 'i');
+    let filtered = Places.PlacesList.filter((place) => {
+        return pattern.test(place.name)
+    });
+    this.setState({
+        searchplaceQuery: this.searchPlaceInput.value,
+        currentPlacesList: filtered,
+        currentPlace: filtered[0] || {}
+    });
+  }
+
   renderMealsList = () => {
     return this.state.currentMealsList.map(meal => {
-        return <div class="category-body-item" onClick={() => this.onMealClick(meal)}>{meal.name}</div>
+        return <div class="category-body-item" onClick={() => this.onMealClick(meal)}>{meal.name}<hr /></div>
+    })
+  }
+
+  renderPlacesList = () => {
+    return this.state.currentPlacesList.map(place => {
+        return (
+            <div className="place-item">
+                <div className="flex-item-info">
+                <a href="#"><i className="fa fa-map-marker fa-3x" aria-hidden="true"></i></a>
+                    <div className="place-info">
+                        <div className="place-name">{place.name}</div>
+                        <div className="place-address">{place.address}</div>
+                    </div>
+                </div>
+                <div className="place-description">{place.description}</div>
+                <button class="place-button">ADD TO CARD</button>
+                <button class="place-button">PHONE</button>
+            </div>
+        )
     })
   }
 
@@ -45,7 +78,7 @@ export default class FindYourMeal extends React.Component {
                 {/* Left sidebar start */} 
                 <div className="sidebar sidebar-left">
                     <div className="search-container">
-                        <input type="text" className="searchInput" placeholder="Type the name here" ref={input => this.search = input} onChange={this.handleInputChange} />
+                        <input type="text" className="searchInput" placeholder="Type the name here" ref={input => this.searchMealInput = input} onChange={this.handleMealInputChange} />
                         <i className="fa fa-search"></i>
                     </div>
                     <div class="search-result-container">
@@ -61,17 +94,12 @@ export default class FindYourMeal extends React.Component {
                 {/* Right sidebar start */}
                 <div class="sidebar sidebar-right">
                     <div className="search-container">
-                        <input type="text" className="searchInput" placeholder="Type the name here" />
+                        <input type="text" className="searchInput" placeholder="Type the name here" ref={input => this.searchPlaceInput = input} onChange={this.handlePlaceInputChange} />
                         <i className="fa fa-search"></i>
                     </div>
                     <div className="search-result-container">
                         <div className="search-response">
-                            <PlaceItem />
-                            <hr />
-                            <PlaceItem />   
-                            <hr />
-                            <PlaceItem />
-                            <hr />
+                            {this.renderPlacesList()}
                         </div>
                     </div>
                 </div>

@@ -37,7 +37,7 @@ displayTab () {
             <div className="find-tabs">
                 <div className="container">
                     <div className="flex-tabs">
-                        <div id="find-your-place" className="find-tab tab-red-active" onClick={() => this.handleClick('FindYourPlace')}>Find your place</div>
+                        <div id="find-your-place" className="find-tab tab-red" onClick={() => this.handleClick('FindYourPlace')}>Find your place</div>
                         <div id="find-your-meal" className="find-tab tab-yellow-active" onClick={() => this.handleClick('FindYourMeal')}>Find your meal</div>
                     </div>
                 </div>
