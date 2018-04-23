@@ -6,7 +6,7 @@ const PlaceAddress = ({ text }) => <div>{text}</div>;
 export default class SimpleMap extends React.Component {
     static defaultProps = {
       center: {lat: 49.845210, lng: 24.030431},
-      zoom: 15
+      zoom: 17
     };
    
     render() {
