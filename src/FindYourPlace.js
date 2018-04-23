@@ -1,5 +1,7 @@
 import React from 'react';
 import Places from './Places';
+import GoogleMapReact from 'google-map-react';
+import SimpleMap from './GoogleMap'
 
 export default class FindYourPlace extends React.Component {
     constructor(props) {
@@ -7,7 +9,8 @@ export default class FindYourPlace extends React.Component {
   
         this.state = {
             currentPlacesList: Places.PlacesList,
-            searchPlaceQuery: ""
+            searchPlaceQuery: "",
+            currentPlace: Places.PlacesList[0]
         }
     }
 
@@ -48,7 +51,7 @@ export default class FindYourPlace extends React.Component {
             <div id="find-your-place-body">
                 <div className="find-tab-body">
                     <div className="center-container">
-                    
+                        <SimpleMap lat={this.state.currentPlace.lat} lng={this.state.currentPlace.lng} name={this.state.currentPlace.name}/>
                     </div> 
                     <div class="sidebar sidebar-right">
                         <div className="search-container">
